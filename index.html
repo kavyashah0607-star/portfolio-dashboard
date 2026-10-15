@@ -127,7 +127,7 @@ a{color:var(--s1)}
     <div>
       <div class="eyebrow">Systematic portfolio · paper-traded live</div>
       <h1>Tested on 47 years. Running live.</h1>
-      <p class="lede">Every trade below is placed automatically by a server, on paper money, from simple published rules. The research behind it is pre-registered, every test is logged, and the failures are shown too.</p>
+      <p class="lede">Every trade is placed automatically by a server, on paper money, from simple published rules. The research behind it is pre-registered, every test is logged, and the failures are shown too.</p>
     </div>
     <div class="head-right">
       <span class="pill" id="status"><span class="dot off"></span>Loading…</span>
@@ -360,7 +360,7 @@ a{color:var(--s1)}
     });
     var e = D.engine || {}, hh = D.health || {};
     document.getElementById("live-note").textContent =
-      (e.runs != null ? e.runs + " automatic runs, " + (e.failed_orders || 0) + " failed orders. " : "") +
+      (e.runs != null ? e.runs + " automatic run" + (e.runs === 1 ? "" : "s") + ", " + (e.failed_orders || 0) + " failed orders. " : "") +
       (hh.checks_last_7d != null ? "Health checks in the last 7 days: " + hh.checks_last_7d + " clean, " + hh.alerts_last_7d + " alerts." : "");
   }
 

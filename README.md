@@ -13,7 +13,7 @@ A rules-based portfolio, paper-traded automatically by a cloud server: 47 years 
 ## How the research is done
 
 - **Pre-registered:** each test's design is saved before it runs, so a bad result can't be explained away afterwards.
-- **Everything logged:** 750+ tests, most of them failures; the rejected ideas are listed on the page.
+- **Everything logged:** 1,100+ logged backtests, most of them failures; the rejected ideas are listed on the page.
 - **Checked against luck:** a signal must beat random timing with the same market exposure, on recent years kept out of the design.
 - **Independent review:** results are reproduced and code-reviewed by a second reviewer before anything is used.
 
