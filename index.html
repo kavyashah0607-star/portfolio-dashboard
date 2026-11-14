@@ -154,7 +154,7 @@ a{color:var(--s1)}
 
   <section>
     <h2>Current allocation</h2>
-    <p class="sub">A diversified, trend-following <b>core</b> (60%) plus a smaller <b>leveraged US-stock satellite</b> (40%). Each part steps aside into T-bills when its markets turn down, and the engine rebalances itself.</p>
+    <p class="sub">A diversified, trend-following <b>core</b> (<span id="split-core">–</span>) plus a <b>leveraged US-stock satellite</b> (<span id="split-sat">–</span>)<span id="split-next"></span>. Each part steps aside into T-bills when its markets turn down, and the engine rebalances itself.</p>
     <div class="grid2">
       <div class="card"><div class="bars" id="holdings"></div></div>
       <div class="card">
@@ -398,7 +398,10 @@ a{color:var(--s1)}
       var ok = !(D.errors && D.errors.length) && D.updated_utc;
       document.getElementById("status").innerHTML = '<span class="dot' + (ok ? "" : " off") + '"></span>' + (ok ? "Live · updated " + esc(D.updated_utc) + " UTC" : "Data partly unavailable");
       document.getElementById("updated").textContent = "Live data updated " + (D.updated_utc || "–") + " UTC, once per trading day.";
-      var hold = D.holdings || [], hb = document.getElementById("holdings"), groups = {core: "Safe core · 60%", satellite: "Risky satellite · 40%", buffer: "Buffer"};
+      var hold = D.holdings || [], hb = document.getElementById("holdings"), sp = D.split || {}, groups = {core: "Safe core · " + (sp.safe_pct != null ? sp.safe_pct + "%" : "–"), satellite: "Risky satellite · " + (sp.risky_pct != null ? sp.risky_pct + "%" : "–"), buffer: "Buffer"};
+      document.getElementById("split-core").textContent = sp.safe_pct != null ? sp.safe_pct + "%" : "–";
+      document.getElementById("split-sat").textContent = sp.risky_pct != null ? sp.risky_pct + "%" : "–";
+      document.getElementById("split-next").textContent = sp.next ? "; moving to " + sp.next.label + " at the " + sp.next.from.slice(0, 4) + " annual reset" : "";
       hb.innerHTML = "";
       ["satellite", "core", "buffer"].forEach(function (g) {
         var rows = hold.filter(function (x) { return x.sleeve === g; });
